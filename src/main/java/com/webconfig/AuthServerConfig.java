@@ -24,9 +24,14 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter
 	@Override
 	public void configure(final ClientDetailsServiceConfigurer clients) throws Exception
 	{
-		clients.inMemory().withClient("webapp").secret(passwordEncoder.encode("secret"))
+		clients.inMemory()
+				.withClient("client1").secret(passwordEncoder.encode("secret"))
 				.authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
 				.redirectUris("http://localhost:9091/chok-sso-client1/login")
+				.and()
+				.withClient("client2").secret(passwordEncoder.encode("secret"))
+				.authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
+				.redirectUris("http://localhost:9092/chok-sso-client2/login")
 		// .accessTokenValiditySeconds(3600)
 		; // 1 hour
 	}
