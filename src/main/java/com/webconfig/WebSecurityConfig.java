@@ -14,16 +14,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
-	{ // @formatter:off
-		http.requestMatchers().antMatchers("/login", "/oauth/authorize").and().authorizeRequests().anyRequest()
+	{
+		http.requestMatchers().antMatchers("/login", "/exit", "/oauth/authorize").and().authorizeRequests().anyRequest()
 				.authenticated().and().formLogin().loginPage("/login").permitAll();
-	} // @formatter:on
+	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception
-	{ // @formatter:off
+	{
 		auth.inMemoryAuthentication().withUser("john").password(passwordEncoder().encode("123")).roles("USER");
-	} // @formatter:on
+	}
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder()
