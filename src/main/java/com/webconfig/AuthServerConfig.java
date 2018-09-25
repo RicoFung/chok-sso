@@ -32,6 +32,10 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter
 				.withClient("client2").secret(passwordEncoder.encode("secret"))
 				.authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
 				.redirectUris("http://localhost:9092/chok-sso-client2/login")
+				.and()
+				.withClient("client3").secret(passwordEncoder.encode("secret"))
+				.authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
+				.redirectUris("http://localhost:9093/chok-demo/login")
 		// .accessTokenValiditySeconds(3600)
 		; // 1 hour
 	}
