@@ -10,7 +10,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 @SpringBootApplication
 @EnableResourceServer
-// exclude表示自动配置时不包括MultipartAutoConfiguration配置（使用CommonsMultipartFile实现多文件上传）
 @EnableAutoConfiguration(exclude = { MultipartAutoConfiguration.class })
 public class Application extends SpringBootServletInitializer
 {
@@ -24,4 +23,5 @@ public class Application extends SpringBootServletInitializer
 	{
 		return application.sources(Application.class);
 	}
+
 }
