@@ -44,18 +44,18 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter
 		// jdbc认证
 		clients.jdbc((DataSource) BeanFactory.getBean("dataSource"))
 		// 内存认证
-		// clients.inMemory()
-		// .withClient("client1").secret(passwordEncoder.encode("secret"))
-		// .authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
-		// .redirectUris("http://localhost:9091/chok-sso-client1/login")
-		// .and()
-		// .withClient("client2").secret(passwordEncoder.encode("secret"))
-		// .authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
-		// .redirectUris("http://localhost:9092/chok-sso-client2/login")
-		// .and()
-		// .withClient("client3").secret(passwordEncoder.encode("secret"))
-		// .authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
-		// .redirectUris("http://localhost:9093/chok-demo/login")
+//		 clients.inMemory()
+//		 .withClient("client1").secret(passwordEncoder.encode("secret"))
+//		 .authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
+//		 .redirectUris("http://localhost:9091/chok-sso-client1/login")
+//		 .and()
+//		 .withClient("client2").secret(passwordEncoder.encode("secret"))
+//		 .authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
+//		 .redirectUris("http://localhost:9092/chok-sso-client2/login")
+//		 .and()
+//		 .withClient("client3").secret(passwordEncoder.encode("secret"))
+//		 .authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
+//		 .redirectUris("http://localhost:9093/chok-demo/login")
 		// // .accessTokenValiditySeconds(3600)
 		; // 1 hour
 	}
@@ -67,10 +67,10 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter
 		endpoints.tokenStore((TokenStore) BeanFactory.getBean("tokenStore"));
 	}
 
-
 	@Bean(name = "tokenStore")
 	public TokenStore tokenStore() throws SQLException
 	{
 		return new JdbcTokenStore((DataSource) BeanFactory.getBean("dataSource"));
 	}
+	
 }

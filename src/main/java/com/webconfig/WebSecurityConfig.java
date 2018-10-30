@@ -32,27 +32,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	{
 		return super.authenticationManagerBean();
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
 	{
-		http
-		.requestMatchers().antMatchers("/login", "/logout", "/oauth/token", "/oauth/authorize")
-		.and()
-		.authorizeRequests().anyRequest().authenticated()
-		// 定制Login
-		.and()
-		.formLogin().loginPage("/login").permitAll()
-		// 定制Logout
-		.and()
-		.logout()
-        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-        .addLogoutHandler(new MyLogoutHandler())
-        // 定制Logout-清除认证信息
-        .deleteCookies()  //底层也是使用Handler实现的额
-        .clearAuthentication(true)
-        .invalidateHttpSession(true)
-		;
+		http.requestMatchers().antMatchers("/login", "/logout", "/oauth/token", "/oauth/authorize", "/error").and()
+				.authorizeRequests().anyRequest().authenticated()
+				// 定制Login
+				.and().formLogin().loginPage("/login").permitAll()
+				// 定制Logout
+				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.addLogoutHandler(new MyLogoutHandler())
+				// 定制Logout-清除认证信息
+				.deleteCookies() // 底层也是使用Handler实现的额
+				.clearAuthentication(true).invalidateHttpSession(true);
 	}
 
 	@Override
@@ -66,9 +59,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	{
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	/**
 	 * 自定义logout
+	 * 
 	 * @author rico.fung
 	 *
 	 */
