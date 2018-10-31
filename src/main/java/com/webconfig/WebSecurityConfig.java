@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -20,12 +21,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.admin.service.MyUserDetailsService;
+
 @Configuration
 @Order(1)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
 	static Logger log = LoggerFactory.getLogger(WebSecurityConfig.class);
 
+	@Autowired
+	MyUserDetailsService service;
+	
 	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception
@@ -51,7 +57,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception
 	{
-		auth.inMemoryAuthentication().withUser("rico").password(passwordEncoder().encode("123")).roles("USER");
+//		auth.inMemoryAuthentication().withUser("rico").password(passwordEncoder().encode("123")).roles("USER");
+		auth.userDetailsService(service).passwordEncoder(passwordEncoder());
 	}
 
 	@Bean
