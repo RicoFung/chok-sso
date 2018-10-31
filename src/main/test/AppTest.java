@@ -20,13 +20,13 @@ public class AppTest
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
-//	@Test
+	@Test
 	public void todo()
 	{
-		System.out.println(passwordEncoder.encode("secret"));
+		System.out.println(new BCryptPasswordEncoder().encode("Epo#Gdpr!181031"));
 	}
 
-	@Test
+//	@Test
 	// 测试时需MARK掉 AuthServerConfig类的oauthServer.allowFormAuthenticationForClients();
 	public void givenDBUser_whenRevokeToken_thenAuthorized()
 	{

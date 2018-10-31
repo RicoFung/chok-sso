@@ -14,57 +14,54 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public class OauthUsers implements UserDetails
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	// username db_column: username
-	private java.lang.String username;
+	private String username;
 	// password db_column: password
-	private java.lang.String password;
+	private String password;
 	// enabled db_column: enabled
-	private java.lang.Boolean enabled;
+	private Boolean enabled;
 
-    private List<? extends GrantedAuthority> authorities;
+    private List<OauthAuthorities> authorities;
 
 	public OauthUsers()
 	{
 	}
 
-	public OauthUsers(java.lang.String username, java.lang.String password, java.lang.Boolean enabled)
+	public OauthUsers(String username, String password, Boolean enabled)
 	{
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
 	}
 
-	public void setUsername(java.lang.String value)
+	public void setUsername(String value)
 	{
 		this.username = value;
 	}
 
-	public java.lang.String getUsername()
+	public String getUsername()
 	{
 		return this.username;
 	}
 
-	public void setPassword(java.lang.String value)
+	public void setPassword(String value)
 	{
 		this.password = value;
 	}
 
-	public java.lang.String getPassword()
+	public String getPassword()
 	{
 		return this.password;
 	}
 
-	public void setEnabled(java.lang.Boolean value)
+	public void setEnabled(Boolean value)
 	{
 		this.enabled = value;
 	}
 	
-	public void setAuthorities(List<? extends GrantedAuthority> authorities)
+	public void setAuthorities(List<OauthAuthorities> authorities)
 	{
 		this.authorities = authorities;
 	}
@@ -78,28 +75,24 @@ public class OauthUsers implements UserDetails
 	@Override
 	public boolean isAccountNonExpired()
 	{
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean isAccountNonLocked()
 	{
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired()
 	{
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean isEnabled()
 	{
-		// TODO Auto-generated method stub
 		return this.enabled;
 	}
 }

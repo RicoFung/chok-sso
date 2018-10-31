@@ -57,7 +57,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception
 	{
+		// 内存认证
 //		auth.inMemoryAuthentication().withUser("rico").password(passwordEncoder().encode("123")).roles("USER");
+		// 自定义认证
 		auth.userDetailsService(service).passwordEncoder(passwordEncoder());
 	}
 

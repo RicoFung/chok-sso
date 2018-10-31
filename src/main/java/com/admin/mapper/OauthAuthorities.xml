@@ -26,6 +26,11 @@
         <result property="authority" column="authority"/>
 	</resultMap>
   	
+	<resultMap type="com.admin.entity.OauthAuthorities" id="result1">
+        <result property="username" column="t1_username"/>
+        <result property="authority" column="authority"/>
+	</resultMap>
+  	
 	<sql id="columns">
 		t.username, t.authority 
 	</sql>

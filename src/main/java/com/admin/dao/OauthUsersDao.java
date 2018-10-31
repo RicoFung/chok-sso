@@ -7,9 +7,9 @@ import chok.devwork.springboot.BaseDao;
 import com.admin.entity.OauthUsers;
 
 @Repository
-public class OauthUsersDao extends BaseDao<OauthUsers,Long>
+public class OauthUsersDao extends BaseDao<OauthUsers, Long>
 {
-	@Resource(name = "sqlSessionTemplate")
+	@Resource
 	private SqlSession sqlSession;
 
 	@Override
@@ -22,5 +22,10 @@ public class OauthUsersDao extends BaseDao<OauthUsers,Long>
 	public Class<OauthUsers> getEntityClass()
 	{
 		return OauthUsers.class;
+	}
+	
+	public OauthUsers getByUsername(String username)
+	{
+		return (OauthUsers) get("getByUsername", username);
 	}
 }
