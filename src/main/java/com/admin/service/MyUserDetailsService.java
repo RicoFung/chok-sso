@@ -29,6 +29,10 @@ public class MyUserDetailsService extends BaseService<OauthUsers, Long> implemen
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
 	{
 		OauthUsers u = dao.getByUsername(username);
+		if (u == null)
+		{
+			throw new UsernameNotFoundException(String.format("User %s does not exist!", username));
+		}
 		return new User(u.getUsername(), u.getPassword(), u.getAuthorities());
 	}
 
