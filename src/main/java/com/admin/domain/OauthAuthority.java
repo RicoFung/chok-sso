@@ -1,4 +1,4 @@
-package com.admin.entity;
+package com.admin.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
  * @version 1.0
  * @since 1.0
  */
-public class OauthAuthorities implements GrantedAuthority
+public class OauthAuthority implements GrantedAuthority
 {
 	private static final long serialVersionUID = 1L;
 	// username db_column: username
@@ -16,11 +16,11 @@ public class OauthAuthorities implements GrantedAuthority
 	// authority db_column: authority
 	private java.lang.String authority;
 
-	public OauthAuthorities()
+	public OauthAuthority()
 	{
 	}
 
-	public OauthAuthorities(java.lang.String username, java.lang.String authority)
+	public OauthAuthority(java.lang.String username, java.lang.String authority)
 	{
 		this.username = username;
 		this.authority = authority;

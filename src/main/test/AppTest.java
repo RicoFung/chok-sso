@@ -23,7 +23,7 @@ public class AppTest
 	@Test
 	public void todo()
 	{
-		System.out.println(new BCryptPasswordEncoder().encode("Epo#Gdpr!181031"));
+		System.out.println(passwordEncoder.encode("Epo#Gdpr!181031"));
 	}
 
 //	@Test

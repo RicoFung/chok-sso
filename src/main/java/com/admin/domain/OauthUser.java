@@ -1,4 +1,4 @@
-package com.admin.entity;
+package com.admin.domain;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @version 1.0
  * @since 1.0
  */
-public class OauthUsers implements UserDetails
+public class OauthUser implements UserDetails
 {
 	private static final long serialVersionUID = 1L;
 
@@ -23,13 +23,13 @@ public class OauthUsers implements UserDetails
 	// enabled db_column: enabled
 	private Boolean enabled;
 
-    private List<OauthAuthorities> authorities;
+    private List<OauthAuthority> authorities;
 
-	public OauthUsers()
+	public OauthUser()
 	{
 	}
 
-	public OauthUsers(String username, String password, Boolean enabled)
+	public OauthUser(String username, String password, Boolean enabled)
 	{
 		this.username = username;
 		this.password = password;
@@ -61,7 +61,7 @@ public class OauthUsers implements UserDetails
 		this.enabled = value;
 	}
 	
-	public void setAuthorities(List<OauthAuthorities> authorities)
+	public void setAuthorities(List<OauthAuthority> authorities)
 	{
 		this.authorities = authorities;
 	}

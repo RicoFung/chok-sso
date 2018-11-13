@@ -1,15 +1,18 @@
 package com.admin.dao;
 
 import javax.annotation.Resource;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import com.admin.entity.TbUser;
+
 import chok.devwork.springboot.BaseDao;
-import com.admin.entity.OauthAuthorities;
 
 @Repository
-public class OauthAuthoritiesDao extends BaseDao<OauthAuthorities,Long>
+public class TbUserDao extends BaseDao<TbUser,Long>
 {
-	@Resource(name = "sqlSessionTemplate")
+	@Resource//(name = "firstSqlSessionTemplate")
 	private SqlSession sqlSession;
 
 	@Override
@@ -19,8 +22,13 @@ public class OauthAuthoritiesDao extends BaseDao<OauthAuthorities,Long>
 	}
 	
 	@Override
-	public Class<OauthAuthorities> getEntityClass()
+	public Class<TbUser> getEntityClass()
 	{
-		return OauthAuthorities.class;
+		return TbUser.class;
+	}
+	
+	public TbUser getByUsername(String username)
+	{
+		return (TbUser) get("getByUsername", username);
 	}
 }
