@@ -23,11 +23,8 @@ import chok.common.BeanFactory;
 @EnableAuthorizationServer
 public class AuthServerConfig extends AuthorizationServerConfigurerAdapter
 {
-	
     @Autowired
     private AuthenticationManager authenticationManager;
-//	@Autowired
-//	private BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception
@@ -56,7 +53,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter
 //		 .withClient("client3").secret(passwordEncoder.encode("secret"))
 //		 .authorizedGrantTypes("authorization_code").scopes("user_info").autoApprove(true)
 //		 .redirectUris("http://localhost:9093/chok-demo/login")
-		// // .accessTokenValiditySeconds(3600)
+//		.accessTokenValiditySeconds(3600)
 		; // 1 hour
 	}
 
@@ -72,5 +69,4 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter
 	{
 		return new JdbcTokenStore((DataSource) BeanFactory.getBean("dataSource"));
 	}
-	
 }
