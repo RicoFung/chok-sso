@@ -19,6 +19,19 @@
 	</properties>
 
 	<dependencies>
+		<!-- logback-glef 用于发送消息至graylog -->
+		<dependency><groupId>de.siegmar</groupId><artifactId>logback-gelf</artifactId></dependency>
+		<!-- 使用logback-glef需排除spring-boot-starter-logging -->
+		<dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-web</artifactId>
+		  <exclusions>
+		      <exclusion>
+		          <groupId>org.springframework.boot</groupId>
+		          <artifactId>spring-boot-starter-logging</artifactId>
+		      </exclusion>
+		  </exclusions>
+		</dependency>
 		<!-- spring-boot thymeleaf -->
 		<dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-thymeleaf</artifactId></dependency>
 		<!-- spring-boot-security -->
